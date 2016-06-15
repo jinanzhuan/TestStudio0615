@@ -7,12 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.guigu.teststudio.MainActivity">
+    tools:context="com.guigu.arrayadapter.SimpleActivity">
 
-    <Button
-        android:onClick="click"
-        android:id="@+id/btn_click"
+    <ListView
+        android:id="@+id/lv_simple_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="点击跳转" />
+        android:layout_height="match_parent"></ListView>
+
 </RelativeLayout>
