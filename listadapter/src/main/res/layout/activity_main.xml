@@ -32,4 +32,12 @@
         android:layout_height="wrap_content"
         android:text="to_Base_List"
          />
+    <Button
+        android:onClick="to_Base_Grid"
+        android:id="@+id/btn4_base_list"
+        android:layout_marginTop="240dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="to_Base_Grid"
+         />
 </RelativeLayout>

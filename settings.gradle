@@ -1,1 +1,1 @@
-include ':app', ':arrayadapter'
+include ':app', ':listadapter', ':menu'

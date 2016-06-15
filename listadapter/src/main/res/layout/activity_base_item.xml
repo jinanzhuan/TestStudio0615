@@ -9,4 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.guigu.arrayadapter.BaseItemActivity">
 
+    <ImageView
+        android:id="@+id/iv_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/f1"/>
+    <TextView
+        android:id="@+id/tv_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_item_image"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="hello world!"/>
+
 </RelativeLayout>

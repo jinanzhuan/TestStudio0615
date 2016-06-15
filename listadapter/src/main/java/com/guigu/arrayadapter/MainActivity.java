@@ -30,4 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, BaseActivity.class);
         startActivity(intent);
     }
+    public void to_Base_Grid(View v) {
+        Intent intent = new Intent(MainActivity.this, GridBaseActivity.class);
+        startActivity(intent);
+    }
 }

@@ -18,7 +18,8 @@
         <activity android:name=".ArrayActivity" />
         <activity android:name=".SimpleActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".BaseItemActivity"></activity>
+        <activity android:name=".BaseItemActivity" />
+        <activity android:name=".GridBaseActivity"></activity>
     </application>
 
 </manifest>

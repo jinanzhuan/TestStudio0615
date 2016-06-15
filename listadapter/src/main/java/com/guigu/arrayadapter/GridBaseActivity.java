@@ -1,14 +1,14 @@
 package com.guigu.arrayadapter;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,25 +16,26 @@ import java.util.List;
 
 import bean.Food;
 
-public class BaseActivity extends AppCompatActivity {
-    ListView lv_base_layout;
+public class GridBaseActivity extends AppCompatActivity {
+    GridView gv_grid_layout;
     private List<Food> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.activity_grid_base);
 
-        //1、获得控件对象
-            lv_base_layout = (ListView)findViewById(R.id.lv_base_layout);
+        //1、获取控件对象
+        gv_grid_layout = (GridView)findViewById(R.id.gv_grid_layout);
         //2、设置数据
-
-        initData();
-
+        iniData();
         //3、设置适配器
-        BaseAdapter adapter=new BaseAdapter() {
 
-            private ImageView iv_array_image;
+        BaseAdapter adapter=new BaseAdapter() {
+            class ViewHolder {
+                ImageView image;
+                TextView text;
+            }
 
             @Override
             public int getCount() {
@@ -53,26 +54,20 @@ public class BaseActivity extends AppCompatActivity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-
                 View view=null;
                 ViewHolder holder=null;
-                //1、如果convertView为空，则新建View对象及加载其对应的组件。
                 if(convertView==null){
-                    view=View.inflate(BaseActivity.this,R.layout.simple_list_layout,null);
-                    holder=new ViewHolder();
-                    iv_array_image = (ImageView) view.findViewById(R.id.iv_array_image);
+                    view=View.inflate(GridBaseActivity.this, R.layout.simple_list_layout, null);
+                    ImageView iv_array_image = (ImageView) view.findViewById(R.id.iv_array_image);
                     TextView tv_array_content = (TextView) view.findViewById(R.id.tv_array_content);
 
+                    holder=new ViewHolder();
                     holder.image=iv_array_image;
                     holder.text=tv_array_content;
 
-                    Log.i("TAG", "view");
-                    Log.i("TAG", "iv_array_image");
-                    Log.i("TAG", "tv_array_content");
-
-                    //利用view的属性，将holder保存到内存中。
                     view.setTag(holder);
-                }else{//不为空的话，则利用缓冲的容器
+
+                }else{
                     view=convertView;
                     holder= (ViewHolder) view.getTag();
                 }
@@ -82,25 +77,23 @@ public class BaseActivity extends AppCompatActivity {
 
                 return view;
             }
-
-            //新建内部类，方便调用其中的方法和属性。
-            class ViewHolder {
-                ImageView image;
-                TextView text;
-            }
         };
 
-        lv_base_layout.setAdapter(adapter);
+        gv_grid_layout.setAdapter(adapter);
 
-        lv_base_layout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gv_grid_layout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+                Intent intent = new Intent(GridBaseActivity.this, BaseItemActivity.class);
+                intent.putExtra("image",list.get(position).getImage());
+                intent.putExtra("content",list.get(position).getContent());
+                startActivity(intent);
             }
         });
+
     }
 
-    private void initData() {
+    private void iniData() {
         list = new ArrayList<Food>();
         String[] contents={"菜品1","菜品2","菜品3","菜品4","菜品5","菜品6","菜品7","菜品8","菜品9","菜品10"};
         int[] images={R.drawable.f1,R.drawable.f2,R.drawable.f3
