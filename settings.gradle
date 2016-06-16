@@ -1,1 +1,1 @@
-include ':app', ':listadapter', ':menu'
+include ':app', ':listadapter', ':menu', ':progressbar', ':dialog', ':testcontentprovider', ':01_provider', ':01_Resolver', ':contentprovidertest', ':day01_contentprovider'
